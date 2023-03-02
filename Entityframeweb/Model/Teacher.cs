@@ -1,6 +1,6 @@
 ﻿namespace Entityframeweb.Model
 {
-    public class Teacherclass
+    public class Teacher
     {
     }
 }
