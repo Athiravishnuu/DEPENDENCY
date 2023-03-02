@@ -1,5 +1,7 @@
 
 using Entityframeweb.Db;
+using Entityframeweb.Services;
+using Entityframeweb.Services.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace Entityframeweb
@@ -16,15 +18,14 @@ namespace Entityframeweb
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
-            var app = builder.Build();
+            builder.Services.AddTransient<IStudentService, StudentServices>();
 
         
-
-            //builder.Services.AddDbContext<DemoDbContext>(options => options.UseSqlServer(
-            //builder.Configuration.GetConnectionString("name")
-            //    ));
-
+            
+            builder.Services.AddDbContext<DemoDbContext>(options => options.UseSqlServer(
+            builder.Configuration.GetConnectionString("name")
+                ));
+            var app = builder.Build();
 
 
             // Configure the HTTP request pipeline.
